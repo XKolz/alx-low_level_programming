@@ -1,52 +1,51 @@
 #include "main.h"
 
 /**
-  * print_times_table - Prints a multiplication table up to param
-  * @n: The number to be treated
-  *
-  * Return: Number matrix
-  */
+ * print_times_table - function that prints the n times table, starting with 0.
+ * @n: input of table n
+ * Return: nothing.
+ */
+
 void print_times_table(int n)
 {
-	int x, y, z;
+ int row, col;
+ int mult = 0;
 
-	if (n >= 0 && n <= 14)
-	{
-		for (x = 0; x <= n; x++)
-		{
-			for (y = 0; y <= n; y++)
-			{
-				z = x * y;
-				if (z > 99)
-				{
-					_putchar(',');
-					_putchar(32);
-					_putchar((z / 100) + '0');
-					_putchar(((z / 10) % 10) + '0');
-					_putchar((z % 10) + '0');
-				}
-				else if (z > 9)
-				{
-					_putchar(',');
-					_putchar(32);
-					_putchar(32);
-					_putchar(((z / 10) % 10) + '0');
-					_putchar((z % 10) + '0');
-				}
-				else
-				{
-					if (y != 0)
-					{
-						_putchar(',');
-						_putchar(32);
-						_putchar(32);
-						_putchar(32);
-					}
-					_putchar(z + '0');
-				}
-			}
-			_putchar('\n');
-		}
-	}
+ if (n <= 15 && n >= 0)
+ {
+ for (row = 0; row <= n; row++)
+ {
+ for (col = 0; col <= n; col++)
+ {
+ mult = (row * col);
+ if (mult < 10)
+ {
+ if (col != 0)
+ {
+ _putchar(' ');
+ _putchar(' ');
+ _putchar(' ');
+ }
+ _putchar(mult + '0');
+ }
+ else if (mult < 100)
+ {
+ _putchar(' ');
+ _putchar(' ');
+ _putchar((mult / 10) + '0');
+ _putchar((mult % 10) + '0');
+ }
+ else
+ {
+ _putchar(' ');
+ _putchar((mult / 100) + '0');
+ _putchar(((mult % 100) / 10) + '0');
+ _putchar((mult % 10) + '0');
+ }
+ if (col != n)
+ _putchar(',');
+ }
+ _putchar('\n');
+ }
+ }
 }
-
